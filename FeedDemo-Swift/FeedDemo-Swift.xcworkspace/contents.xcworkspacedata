@@ -5,6 +5,12 @@
       location = "group:FeedDemo-Swift.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../ApplicasterDev/Feed-2.0-iOS/APFeed2.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../ApplicasterDev/applicaster2-sdk/applicaster.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

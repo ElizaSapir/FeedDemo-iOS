@@ -68,13 +68,25 @@ PODS:
   - HockeySDK (3.8.5):
     - HockeySDK/AllFeaturesLib (= 3.8.5)
   - HockeySDK/AllFeaturesLib (3.8.5)
-  - Mixpanel (2.9.3):
-    - Mixpanel/Mixpanel (= 2.9.3)
-  - Mixpanel/Mixpanel (2.9.3)
+  - Mixpanel (2.9.4):
+    - Mixpanel/Mixpanel (= 2.9.4)
+  - Mixpanel/Mixpanel (2.9.4)
   - TTTAttributedLabel (1.13.1)
 
 DEPENDENCIES:
+  - AFNetworking (= 2.6.3)
   - APFeed (= 3.5.1)
+  - CocoaLumberjack (= 1.9.2)
+  - comScore-iOS-SDK (= 3.1509.15)
+  - FBSDKCoreKit (= 4.7.0)
+  - FBSDKLoginKit (= 4.7.0)
+  - FBSDKShareKit (= 4.7.0)
+  - Flurry-iOS-SDK (= 7.3.0)
+  - Google-Mobile-Ads-SDK (= 7.6.0)
+  - GoogleAnalytics (= 3.14.0)
+  - HockeySDK (= 3.8.5)
+  - Mixpanel (~> 2.9.0)
+  - TTTAttributedLabel (= 1.13.1)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -90,7 +102,7 @@ SPEC CHECKSUMS:
   Google-Mobile-Ads-SDK: 0290020329c61183c4685304264b73382bc49fb4
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   HockeySDK: dd11a2b9da3372fd025643bee5bc10c8c613d169
-  Mixpanel: b9ff1c5d41fc07037d4b813bf2799c050ee3e49b
+  Mixpanel: 80d2ca9bb38ae91c1044d738e80fe448377ac89f
   TTTAttributedLabel: 0a9e524c8d78301506c26affffc827429b833b25
 
 COCOAPODS: 0.39.0

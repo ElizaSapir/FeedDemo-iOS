@@ -1,0 +1,6 @@
+[submodule "ApplicasterDev/Feed-2.0-iOS"]
+	path = ApplicasterDev/Feed-2.0-iOS
+	url = https://github.com/applicaster/Feed-2.0-iOS.git
+[submodule "ApplicasterDev/applicaster2-sdk"]
+	path = ApplicasterDev/applicaster2-sdk
+	url = https://github.com/applicaster/applicaster2-sdk.git

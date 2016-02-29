@@ -74,7 +74,19 @@ PODS:
   - TTTAttributedLabel (1.13.1)
 
 DEPENDENCIES:
+  - AFNetworking (= 2.6.3)
   - APFeed (= 3.5.1)
+  - CocoaLumberjack (= 1.9.2)
+  - comScore-iOS-SDK (= 3.1509.15)
+  - FBSDKCoreKit (= 4.7.0)
+  - FBSDKLoginKit (= 4.7.0)
+  - FBSDKShareKit (= 4.7.0)
+  - Flurry-iOS-SDK (= 7.3.0)
+  - Google-Mobile-Ads-SDK (= 7.6.0)
+  - GoogleAnalytics (= 3.14.0)
+  - HockeySDK (= 3.8.5)
+  - Mixpanel (~> 2.9.0)
+  - TTTAttributedLabel (= 1.13.1)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
