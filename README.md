@@ -1,7 +1,7 @@
 # Applicaster Feed Integration Guide (iOS)
 [![Build Status](https://travis-ci.org/applicaster/FeedDemo-iOS.svg?branch=master)](https://travis-ci.org/applicaster/FeedDemo-iOS)
 
-This document will explain how to intergrate Applicaster Feed to your project using CocoaPods.  
+This document will explain how to intergrate Applicaster Feed into your project using CocoaPods
 Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-iOS)
 + [Swift Project](https://github.com/applicaster/FeedDemo-iOS/tree/master/FeedDemo-Swift)
 + [Objective-C Project](https://github.com/applicaster/FeedDemo-iOS/tree/master/FeedDemo-ObjectiveC)
@@ -12,19 +12,19 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
 + [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)  
 
 ### Setup
-1. Create a file named `Podfile` in the root directory of your project (note it does not contain an extension)
+1. Create a file named `Podfile` in the root directory of your project (note that it does not contain an extension)
 2. Add Official CocoaPods PodSpecs repository to your Podfile:  
     `source 'https://github.com/CocoaPods/Specs.git'`
-3. Add Applicaster private PodSpecs repository to your Podfile  
+3. Add Applicaster private PodSpecs repository to your Podfile:  
     `source 'git@github.com:applicaster/CocoaPods.git'`
-4. Add Applicaster Feed to your Podfile.  
+4. Add Applicaster Feed to your Podfile:  
     `pod 'APFeed'`  
-5. Using *terminal*, with your project root directory as the *working path*,  
-run: `pod install`  
+5. Using *terminal*, with your project root directory as the *working path*, run:
+    `pod install`  
 >This will download all the necessary files which are required to integrate the Applicaster Feed into your project. Visit the CocoaPods web page for more information.  
 **Notice**: CocoaPods automatically created a new Xcode workspace, open the workspace.
 
-6. Due to a limitation it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
+6. Due to a limitation, it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
 
 ##### 3rd Party Dependencies
 Libraries that are directly linked within the Applicaster SDK:   
@@ -97,7 +97,10 @@ __objective-c__
 ```
 
 __swift__  
-Add bridging `<#Target-Name>-Bridging-Header.h` if it dosen't exist in your project. Add the objective-c header to bridging header.
+Add bridging `<#Target-Name>-Bridging-Header.h` if it dosen't exist in your project.
+```objective-c
+#import <Applicaster/APApplicaster.h>
+```
 
 **AppDelegate:**
 
@@ -220,7 +223,7 @@ The values for the following keys will be provided by Applicaster `APAccountID`,
                                            object:nil];
 ```
 
-+ Below is a basic implementation that should be added in the class for updating the buttons according to the notifications (The Feed button should be initially hidden):
++ Below is a basic implementation that should be added in the class for updating the buttons according to the notifications (the Feed button should be initially hidden):
 ```objective-c
  - (void)timelineStatusChanged:(NSNotification *)notification {
     if (!notification.userInfo || ![notification.userInfo objectForKey:kIsTimelineAvailableKey]) {
@@ -234,7 +237,7 @@ The values for the following keys will be provided by Applicaster `APAccountID`,
  - (void)episodeStatusChanged:(NSNotification *)notification
 {
     // This implementation enables you to have a button visible only when the feature
-    // is live from the Applicaster Stars CMS and only enable the button when an episode is currently available.
+    // is live from the Applicaster CMS and only enable the button when an episode is currently available.
     if (notification.userInfo && [notification.userInfo objectForKey:kIsEpisodeAvailableKey]) {
         self.feedButton.enabled = YES;
     }
@@ -255,7 +258,7 @@ The values for the following keys will be provided by Applicaster `APAccountID`,
 
 ### Using multiple timelines
 
-Applicaster Feed supports multiple timelines (feeds), in order to handle them a small change should be done as both the launch command and the notification for the feed status change should be checked for the relevant timeline.
+Applicaster Feed supports multiple timelines (Feeds). In order to handle them, a small change should be done as both the launch command and the notification for the Feed status change should be checked for the relevant timeline.
 
 + In order to launch a specific timeline:
 ```objective-c
@@ -297,10 +300,10 @@ Applicaster Feed supports multiple timelines (feeds), in order to handle them a 
 }
 ```
 
-### Pulling Episodes for a specific timeline
+### Pulling episodes for a specific timeline
 
 Applicaster Feed allows you to pull all the available episodes for a specific timeline. You can use this ability only for retrieving episodes from a timeline checked as "Live" in Applicaster's management system.
-One possible usage of this ability is creating a custom page and promote live/future episodes, for example.
+One possible usage of this ability is creating a custom page and to promote live/future episodes, for example.
 
 + The next example shows you how to retrieve all the live and future episodes for a specific timeline. In this case it only pulls the episodes for the first timeline if exists:  
 ```objective-c
@@ -336,7 +339,7 @@ One possible usage of this ability is creating a custom page and promote live/fu
     }
 ```
 
-+ The dictionary contains all data you need for the event including the event name. here is an example of a real event dictionary which indicates that a user is opened the Feed:
++ The dictionary contains all the data you need for the event including the event name. Here is an example of a real event dictionary which indicates that a user has opened the Feed:
 ```
 "Episode name" = "Best Episode";
 "Facebook page ID" = "";
