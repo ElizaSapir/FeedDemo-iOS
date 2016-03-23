@@ -5,11 +5,11 @@ git:
 script:
   - pushd FeedDemo-ObjectiveC
   - pod install
-  - ./scripts/build.sh
+  - ./scripts/build.sh | xcpretty
   - popd
   - pushd FeedDemo-Swift
   - pod install
-  - ./scripts/build.sh
+  - ./scripts/build.sh | xcpretty
   - popd
 notifications:
   slack:
