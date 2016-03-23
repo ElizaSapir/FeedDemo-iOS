@@ -5,20 +5,5 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/applicaster/CocoaPods.git'
 
 target 'FeedDemo-Swift' do
-    pod 'APFeed', '= 3.5.1'
-end
-
-target 'Applicaster-Development' do
-    pod 'CocoaLumberjack', '= 1.9.2'
-    pod 'FBSDKCoreKit', '= 4.7.0'
-    pod 'FBSDKLoginKit', '= 4.7.0'
-    pod 'FBSDKShareKit', '= 4.7.0'
-    pod 'GoogleAnalytics', '= 3.14.0'
-    pod 'Google-Mobile-Ads-SDK', '= 7.6.0'
-    pod 'HockeySDK', '= 3.8.5'
-    pod 'Flurry-iOS-SDK', '= 7.3.0'
-    pod 'Mixpanel', '~> 2.9.0'
-    pod 'comScore-iOS-SDK', '= 3.1509.15'
-    pod 'AFNetworking', '= 2.6.3'
-    pod 'TTTAttributedLabel', '= 1.13.1'
+    pod 'APFeed', '~> 3.5.2'
 end

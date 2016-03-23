@@ -20,8 +20,8 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - APFeed (3.5.1):
-    - Applicaster (= 2.18.183)
+  - APFeed (3.5.2):
+    - Applicaster (~> 2.18.183)
   - Applicaster (2.18.183):
     - AFNetworking (= 2.6.3)
     - CocoaLumberjack (= 1.9.2)
@@ -74,23 +74,11 @@ PODS:
   - TTTAttributedLabel (1.13.1)
 
 DEPENDENCIES:
-  - AFNetworking (= 2.6.3)
-  - APFeed (= 3.5.1)
-  - CocoaLumberjack (= 1.9.2)
-  - comScore-iOS-SDK (= 3.1509.15)
-  - FBSDKCoreKit (= 4.7.0)
-  - FBSDKLoginKit (= 4.7.0)
-  - FBSDKShareKit (= 4.7.0)
-  - Flurry-iOS-SDK (= 7.3.0)
-  - Google-Mobile-Ads-SDK (= 7.6.0)
-  - GoogleAnalytics (= 3.14.0)
-  - HockeySDK (= 3.8.5)
-  - Mixpanel (~> 2.9.0)
-  - TTTAttributedLabel (= 1.13.1)
+  - APFeed (~> 3.5.2)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
-  APFeed: 36522ed16c7c2fb007acd909cc0ca07108117d3a
+  APFeed: 21d053314e42ea3252ad1b698a15d2c2733de2e5
   Applicaster: 678cc17c4cf2a25a2051dace142d687326531cee
   Bolts: f52a250053bb517ca874523c3913776359ab3def
   CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
