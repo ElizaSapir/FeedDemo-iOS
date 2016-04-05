@@ -24,6 +24,7 @@
 		1D3525341C7356A8004DB5B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D3525321C7356A8004DB5B5 /* LaunchScreen.storyboard */; };
 		1D37AAE31C7C6CB3009C3844 /* APFeedDemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D37AAE21C7C6CB3009C3844 /* APFeedDemoTableViewController.swift */; };
 		1D37AAF41C7CBA52009C3844 /* ApplicasterSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1D37AAF31C7CBA52009C3844 /* ApplicasterSettings.plist */; };
+		3236AD711CB3FF4B00633742 /* libAdManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3236AD701CB3FF4B00633742 /* libAdManager.a */; };
 		56F5DF883152F71B924C0951 /* Pods_Applicaster_Development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524CE611310EFD188C66053A /* Pods_Applicaster_Development.framework */; };
 		A21D183CA0D147EFE109744A /* Pods_FeedDemo_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BF24F118B3636EA2519C18D /* Pods_FeedDemo_Swift.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		1D37AAF21C7CB47E009C3844 /* FeedDemo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FeedDemo-Swift-Bridging-Header.h"; path = "Classes/FeedDemo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D37AAF31C7CBA52009C3844 /* ApplicasterSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApplicasterSettings.plist; sourceTree = "<group>"; };
 		208F7A8F07D5611BFFCFCF06 /* Pods-Applicaster-Development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Applicaster-Development.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Applicaster-Development/Pods-Applicaster-Development.debug.xcconfig"; sourceTree = "<group>"; };
+		3236AD701CB3FF4B00633742 /* libAdManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAdManager.a; path = "../ApplicasterDev/applicaster2-sdk/applicaster_core/external_frameworks/FreewheelSDK/libAdManager.a"; sourceTree = "<group>"; };
 		4BF24F118B3636EA2519C18D /* Pods_FeedDemo_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedDemo_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524CE611310EFD188C66053A /* Pods_Applicaster_Development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Applicaster_Development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AC0CC2854E708F04E13625 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				1D15EA181C8468A20055BADE /* Social.framework in Frameworks */,
 				1D15EA041C84525E0055BADE /* libapplicaster-lite.a in Frameworks */,
 				1D15EA021C8452540055BADE /* libAPFeed2.a in Frameworks */,
+				3236AD711CB3FF4B00633742 /* libAdManager.a in Frameworks */,
 				56F5DF883152F71B924C0951 /* Pods_Applicaster_Development.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +141,7 @@
 		32D676B662CB1F7FA9078FC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3236AD701CB3FF4B00633742 /* libAdManager.a */,
 				1D15EA2E1C846A110055BADE /* Accelerate.framework */,
 				1D15EA2C1C8469E30055BADE /* iAd.framework */,
 				1D15EA171C8468A20055BADE /* Social.framework */,
@@ -163,6 +167,7 @@
 				1D1D62AF1C84486000B2F31B /* Resources */,
 				9233143AF63CB0179DF689BF /* Embed Pods Frameworks */,
 				E558C7F5D79E76C17341069D /* Copy Pods Resources */,
+				3236AD9C1CB401F000633742 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -286,6 +291,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedDemo-Swift/Pods-FeedDemo-Swift-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3236AD9C1CB401F000633742 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r \"${BUILT_PRODUCTS_DIR}/ApplicasterCoreResources/\" \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\"\ncp -r \"${BUILT_PRODUCTS_DIR}/ApplicasterResources/\" \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\"\ncp -r \"${BUILT_PRODUCTS_DIR}/APCore.bundle\" \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\"\ncp -r \"${BUILT_PRODUCTS_DIR}/APFeed2Bundle.bundle\" \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\"\n\npushd \"${BUILT_PRODUCTS_DIR}/${TARGET_NAME}.app\"\n/bin/sh ./SettingsScript.sh\npopd";
+		};
 		448079ACC633A1516C51DB1A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +416,13 @@
 				INFOPLIST_FILE = "FeedDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/GoogleAnalytics/Libraries\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/comScore-iOS-SDK/comScore\"",
+					"\"$(SRCROOT)/../ApplicasterDev/applicaster2-sdk/applicaster_core/external_frameworks/FreewheelSDK\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -489,6 +514,13 @@
 				INFOPLIST_FILE = "FeedDemo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/GoogleAnalytics/Libraries\"",
+					"$(inherited)",
+					"\"${PODS_ROOT}/comScore-iOS-SDK/comScore\"",
+					"\"$(SRCROOT)/../ApplicasterDev/applicaster2-sdk/applicaster_core/external_frameworks/FreewheelSDK\"",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

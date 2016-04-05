@@ -17,7 +17,7 @@
                BlueprintIdentifier = "39F676BE181D68460045C977"
                BuildableName = "libapplicaster-lite.a"
                BlueprintName = "applicaster-lite"
-               ReferencedContainer = "container:ApplicasterDev/applicaster2-sdk/applicaster.xcodeproj">
+               ReferencedContainer = "container:../ApplicasterDev/applicaster2-sdk/applicaster.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "34E41BB518F6D8F70062BD54"
                BuildableName = "libAPFeed2.a"
                BlueprintName = "APFeed2"
-               ReferencedContainer = "container:ApplicasterDev/Feed-2.0-iOS/APFeed2.xcodeproj">
+               ReferencedContainer = "container:../ApplicasterDev/Feed-2.0-iOS/APFeed2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
