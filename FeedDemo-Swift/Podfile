@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/applicaster/CocoaPods.git'
 
 target 'FeedDemo-Swift' do
-    pod 'APFeed', '= 3.5.1'
+    pod 'APFeed', '= 3.5.3'
 end
 
 target 'Applicaster-Development' do
