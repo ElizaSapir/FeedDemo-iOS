@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, APApplicasterControllerDe
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        APApplicasterController.initSharedInstanceWithPListSettingsWithSecretKey(kAppSecretKey)
+        APApplicasterController.initSharedInstanceWithPListSettingsWithSecretKey(kAppSecretKey,
+                                                                                 launchOption:launchOptions)
         APApplicasterController.sharedInstance().delegate = self
         APApplicasterController.sharedInstance().rootViewController = self.window?.rootViewController
         APApplicasterController.sharedInstance().load()

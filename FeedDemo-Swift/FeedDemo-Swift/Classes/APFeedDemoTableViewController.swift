@@ -15,8 +15,8 @@ class APFeedDemoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "timelineStatusChanged:", name: kTimeFeedTimeLineStatusChanged, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "episodeStatusChanged:", name: kFeedEpisodeStatusChanged, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(APFeedDemoTableViewController.timelineStatusChanged(_:)), name: kTimeFeedTimeLineStatusChanged, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(APFeedDemoTableViewController.episodeStatusChanged(_:)), name: kFeedEpisodeStatusChanged, object: nil)
         
         updateTimelines()
     }

@@ -8,10 +8,10 @@
 
 #import "APFeedDemoTableViewController.h"
 
-#import <Applicaster/APTimelinesManager.h>
-#import <Applicaster/APFeedTimeline.h>
-#import <Applicaster/APFeedEpisode.h>
-#import <APFeed2/APNewFeedManager.h>
+#import <ApplicasterSDK/APTimelinesManager.h>
+#import <ApplicasterSDK/APFeedTimeline.h>
+#import <ApplicasterSDK/APFeedEpisode.h>
+#import <APFeed/APNewFeedManager.h>
 
 @interface APFeedDemoTableViewController ()
 

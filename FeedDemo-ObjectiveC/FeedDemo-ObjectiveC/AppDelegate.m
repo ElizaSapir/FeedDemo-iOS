@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 
-#import <Applicaster/APApplicaster.h>
-#import <Applicaster/APTimelinesManager.h>
+@import ApplicasterSDK;
+#import <ApplicasterSDK/APTimelinesManager.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate () <APApplicasterControllerDelegate>
@@ -27,7 +27,8 @@
 static NSString *kAppSecretKey = @"c02165c93cc72695ac757e957e";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [APApplicasterController initSharedInstanceWithPListSettingsWithSecretKey:kAppSecretKey];
+    [APApplicasterController initSharedInstanceWithPListSettingsWithSecretKey:kAppSecretKey
+                                                                 launchOption:launchOptions];
     [[APApplicasterController sharedInstance] setDelegate:self];
     [[APApplicasterController sharedInstance] setRootViewController:self.window.rootViewController];
     [[APApplicasterController sharedInstance] load];
