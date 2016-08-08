@@ -1,5 +1,4 @@
 # Applicaster Feed Integration Guide (iOS)
-[![Build Status](https://travis-ci.org/applicaster/FeedDemo-iOS.svg?branch=master)](https://travis-ci.org/applicaster/FeedDemo-iOS)
 
 This document will explain how to intergrate Applicaster Feed into your project using CocoaPods
 Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-iOS)
@@ -20,12 +19,14 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
     `pod 'APFeed'`
-5. Using *terminal*, with your project root directory as the *working path*, run:
+5. Due to a temporary linking issue please add Flurry to your Podfile:
+    `pod 'Flurry-iOS-SDK', '~> 7.6'`
+6. Using *terminal*, with your project root directory as the *working path*, run:
     `pod install`
 >This will download all the necessary files which are required to integrate the Applicaster Feed into your project. Visit the CocoaPods web page for more information.
 **Notice**: CocoaPods automatically created a new Xcode workspace, use only the workspace to work with the project.
 
-6. Due to a limitation, it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
+7. Due to a limitation, it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
 
 ##### 3rd Party Dependencies
 Libraries that are directly linked within the Applicaster SDK:
