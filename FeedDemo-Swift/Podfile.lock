@@ -85,6 +85,9 @@ PODS:
   - FirebaseInstanceID (1.0.8)
   - FLAnimatedImage_Applicaster (1.1.0):
     - CocoaLumberjack/Swift
+  - Flurry-iOS-SDK (7.6.6):
+    - Flurry-iOS-SDK/FlurrySDK (= 7.6.6)
+  - Flurry-iOS-SDK/FlurrySDK (7.6.6)
   - FormatterKit (1.8.1):
     - FormatterKit/AddressFormatter (= 1.8.1)
     - FormatterKit/ArrayFormatter (= 1.8.1)
@@ -140,6 +143,7 @@ PODS:
 
 DEPENDENCIES:
   - APFeed (~> 3.5.5)
+  - Flurry-iOS-SDK (~> 7.6)
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -158,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 0fd6532cb2c3d03cd5cf26ad295ccb091efd3104
   FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
   FLAnimatedImage_Applicaster: 0ab36e510467d4110b21cfbe8cf2e7bd608f6ba0
+  Flurry-iOS-SDK: 97bbeec09cca666c2f1772f6e161c4f8ccff611e
   FormatterKit: 11ad17b983200629246a5a466f6f1bfa2df823cb
   Freewheel: c1ca8ff2ff2775fe6989e64e86b804d8e24ecc77
   Google-Mobile-Ads-SDK: 3c2a6656117989469bfe7645640aa1de024a4c6c
@@ -175,6 +180,6 @@ SPEC CHECKSUMS:
   TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
   ZappPlugins: 8ef21792205f00d844a7a764426d5062d7fac47a
 
-PODFILE CHECKSUM: c89a45496b84db8f35ecaeb0ed79068a11d6f865
+PODFILE CHECKSUM: d245b88e711a8bb693a07e43de14d727603d160c
 
 COCOAPODS: 1.0.1

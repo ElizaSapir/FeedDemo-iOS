@@ -7,4 +7,5 @@ source 'git@github.com:CocoaPods/Specs.git'
 
 target 'FeedDemo-Swift' do
     pod 'APFeed', '~> 3.5.5'
+    pod 'Flurry-iOS-SDK', '~> 7.6'
 end
