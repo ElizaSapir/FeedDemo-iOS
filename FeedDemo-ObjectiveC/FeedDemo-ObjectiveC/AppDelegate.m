@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 
 @import ApplicasterSDK;
-#import <ApplicasterSDK/APTimelinesManager.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate () <APApplicasterControllerDelegate>
