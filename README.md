@@ -19,6 +19,14 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
     `pod 'APFeed'`
+    `pod 'ZappAnalyticsPlugins', '~> 0.4.2'`
+5. Add the following pre-install script to your Podfile (CocoaPods transitive dependencies workaround):
+    ```
+    pre_install do |installer|
+        # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
+        def installer.verify_no_static_framework_transitive_dependencies; end
+    end
+    ```
 5. Using *terminal*, with your project root directory as the *working path*, run:
     `pod install`
 >This will download all the necessary files which are required to integrate the Applicaster Feed into your project. Visit the CocoaPods web page for more information.
