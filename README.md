@@ -19,9 +19,15 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
     `pod 'APFeed'`
-5. Due to a temporary linking issue please add Flurry to your Podfile:
-    `pod 'Flurry-iOS-SDK', '~> 7.6'`
-6. Using *terminal*, with your project root directory as the *working path*, run:
+    `pod 'ZappAnalyticsPlugins', '~> 0.4.2'`
+5. Add the following pre-install script to your Podfile (CocoaPods transitive dependencies workaround):
+    ```
+    pre_install do |installer|
+        # workaround for https://github.com/CocoaPods/CocoaPods/issues/3289
+        def installer.verify_no_static_framework_transitive_dependencies; end
+    end
+    ```
+5. Using *terminal*, with your project root directory as the *working path*, run:
     `pod install`
 >This will download all the necessary files which are required to integrate the Applicaster Feed into your project. Visit the CocoaPods web page for more information.
 **Notice**: CocoaPods automatically created a new Xcode workspace, use only the workspace to work with the project.
@@ -33,7 +39,7 @@ Libraries that are directly linked within the Applicaster SDK:
 + MPNotificationView 1.1 forked (Bug fixes)
 + Formatter Kit ~> 1.8.0
 + SHMKit (commit 7a964057e218d1582a3c91e268755cdd9538bfcb)
-+ Appoxee 4.0.7
++ Appoxee 4.0.13
 + FreeWheel ~> 5.18.2
 + ePlanning ~> 1.15
 > Note: If these libraries cause duplicate symbols in your code - please notify us.
@@ -50,7 +56,7 @@ Pod sub dependencies by Applicaster SDK:
 + Flurry-iOS-SDK = 7.3.0
 + Mixpanel ~> 2.9.0
 + comScore-iOS-SDK = 3.1509.15
-+ AFNetworking = 2.6.3
++ AFNetworking ~> 3.1.0
 + TTTAttributedLabel ~> 1.13.1
 
 #### Other required configurations
