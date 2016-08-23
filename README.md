@@ -73,14 +73,16 @@ Pod sub dependencies by Applicaster SDK:
 ```
 
 + URL Scheme support, add your app url scheme to the URL types and to the `LSApplicationQueriesSchemes`
-+ Add Facebook SDK related entries to your target's Info.plist  (https://developers.facebook.com/docs/ios/ios9):
++ Add Facebook SDK, Whatsapp and Applicaster related entries to your target's Info.plist  (https://developers.facebook.com/docs/ios/ios9):
 ```plist
 <key>LSApplicationQueriesSchemes</key>
     <array>
-      <string>fbapi</string>
+    <string>fbapi</string>
 		<string>fb-messenger-api</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
+    <string>whatsapp</string>
+    <string>applicaster</string>
   </array>
 ```
 + Add your Facebook AppId to the URL types as a scheme (https://developers.facebook.com/docs/ios/getting-started#settings, see section 5)
