@@ -11,6 +11,5 @@ pre_install do |installer|
 end
 
 target 'FeedDemo-ObjectiveC' do
-    pod 'APFeed', '3.5.8'
-    pod 'ZappAnalyticsPlugins', '~> 0.4.2'
+    pod 'APFeed', '3.5.9'
 end
