@@ -35,6 +35,7 @@
 		1DA411A11C74956A00C76F50 /* APFeedDemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APFeedDemoTableViewController.h; sourceTree = "<group>"; };
 		1DA411A21C74956A00C76F50 /* APFeedDemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APFeedDemoTableViewController.m; sourceTree = "<group>"; };
 		2BA27D0F17CBF3BA8EC365AF /* Pods_FeedDemo_ObjectiveC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedDemo_ObjectiveC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		39337C631DC10A2A001EA557 /* FeedDemo-ObjectiveC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedDemo-ObjectiveC.entitlements"; sourceTree = "<group>"; };
 		A382005784AE5C57CB651CE6 /* Pods-FeedDemo-ObjectiveC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedDemo-ObjectiveC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedDemo-ObjectiveC/Pods-FeedDemo-ObjectiveC.debug.xcconfig"; sourceTree = "<group>"; };
 		C694D767C17FA28AEA16FBCD /* Pods-FeedDemo-ObjectiveC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedDemo-ObjectiveC.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedDemo-ObjectiveC/Pods-FeedDemo-ObjectiveC.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +82,7 @@
 		1D3525051C735087004DB5B5 /* FeedDemo-ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
+				39337C631DC10A2A001EA557 /* FeedDemo-ObjectiveC.entitlements */,
 				1D3525091C735087004DB5B5 /* AppDelegate.h */,
 				1D35250A1C735087004DB5B5 /* AppDelegate.m */,
 				1DA411971C74905100C76F50 /* Classes */,
@@ -159,6 +161,12 @@
 				TargetAttributes = {
 					1D3525021C735087004DB5B5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WZZ4E5L8EL;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -237,7 +245,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -364,6 +372,8 @@
 			baseConfigurationReference = A382005784AE5C57CB651CE6 /* Pods-FeedDemo-ObjectiveC.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FeedDemo-ObjectiveC/FeedDemo-ObjectiveC.entitlements";
+				DEVELOPMENT_TEAM = WZZ4E5L8EL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/APFeed\"/**",
@@ -403,6 +413,8 @@
 			baseConfigurationReference = C694D767C17FA28AEA16FBCD /* Pods-FeedDemo-ObjectiveC.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "FeedDemo-ObjectiveC/FeedDemo-ObjectiveC.entitlements";
+				DEVELOPMENT_TEAM = WZZ4E5L8EL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/APFeed\"/**",

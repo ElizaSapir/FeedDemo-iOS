@@ -43,6 +43,7 @@
 		1D37AAE21C7C6CB3009C3844 /* APFeedDemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APFeedDemoTableViewController.swift; sourceTree = "<group>"; };
 		1D37AAF21C7CB47E009C3844 /* FeedDemo-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FeedDemo-Swift-Bridging-Header.h"; path = "Classes/FeedDemo-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
 		1D37AAF31C7CBA52009C3844 /* ApplicasterSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApplicasterSettings.plist; sourceTree = "<group>"; };
+		39337C621DC105F3001EA557 /* FeedDemo-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "FeedDemo-Swift.entitlements"; sourceTree = "<group>"; };
 		93A678D10B6E4F3A50225D46 /* Pods_FeedDemo_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedDemo_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9910983692133B5CA80F4DEC /* Pods-FeedDemo-Swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedDemo-Swift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedDemo-Swift/Pods-FeedDemo-Swift.debug.xcconfig"; sourceTree = "<group>"; };
 		C77A9EBBD663FBDFA6C42628 /* Pods-FeedDemo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedDemo-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedDemo-Swift/Pods-FeedDemo-Swift.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +96,7 @@
 		1D3525281C7356A8004DB5B5 /* FeedDemo-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				39337C621DC105F3001EA557 /* FeedDemo-Swift.entitlements */,
 				1D3525291C7356A8004DB5B5 /* AppDelegate.swift */,
 				1D37AAF21C7CB47E009C3844 /* FeedDemo-Swift-Bridging-Header.h */,
 				1D37AAE11C7C6CB3009C3844 /* Classes */,
@@ -193,6 +195,12 @@
 					};
 					1D3525251C7356A8004DB5B5 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = WZZ4E5L8EL;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -283,7 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -550,6 +558,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -587,6 +596,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -598,6 +608,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "FeedDemo-Swift/FeedDemo-Swift.entitlements";
+				DEVELOPMENT_TEAM = WZZ4E5L8EL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -624,6 +636,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "FeedDemo-Swift/FeedDemo-Swift.entitlements";
+				DEVELOPMENT_TEAM = WZZ4E5L8EL;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
