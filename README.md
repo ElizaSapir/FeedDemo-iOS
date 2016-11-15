@@ -6,7 +6,7 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
 + [Objective-C Project](https://github.com/applicaster/FeedDemo-iOS/tree/master/FeedDemo-ObjectiveC)
 
 ### Requirements
-+ Xcode 7.3.1
++ Xcode 8
 + Deployment target 8.0 or above (valid architectures - armv7, arm64)
 + [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
 
@@ -18,7 +18,11 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods.git'`
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
-    `pod 'APFeed'`
+    ```
+    pod 'APFeed', '~> 3.5.12'
+    pod 'ZappAnalyticsPlugins/GoogleAnalytics','~> 0.4.5'
+    pod 'ZappAnalyticsPlugins','~> 0.4.5'
+    ```
 5. Add the following pre-install script to your Podfile (CocoaPods transitive dependencies workaround):
 
     ```
@@ -27,26 +31,31 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
         def installer.verify_no_static_framework_transitive_dependencies; end
     end
     ```
-    
-5. Using *terminal*, with your project root directory as the *working path*, run:
+6. Add the following post-install script to you Podfile (Setting swift version to 2.3):
+    ```
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '2.3'
+            end
+        end
+    end
+    ```
+7. Using *terminal*, with your project root directory as the *working path*, run:
     `pod install`
 >This will download all the necessary files which are required to integrate the Applicaster Feed into your project. Visit the CocoaPods web page for more information.
 **Notice**: CocoaPods automatically created a new Xcode workspace, use only the workspace to work with the project.
 
-7. Due to a limitation, it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
+8. Due to a limitation, it is necessary to change **recursive** in the `HEADER_SEARCH_PATHS` that points to the headers of the generated `Applicaster`, `APFeed` frameworks in your project target (otherwise you will receive a compile error due to missing headers).
 
 ##### 3rd Party Dependencies
 Libraries that are directly linked within the Applicaster SDK:
-+ MPNotificationView 1.1 forked (Bug fixes)
-+ Formatter Kit ~> 1.8.0
-+ SHMKit (commit 7a964057e218d1582a3c91e268755cdd9538bfcb)
-+ Appoxee 4.0.13
-+ FreeWheel ~> 5.18.2
-+ ePlanning ~> 1.15
+ forked (Bug fixes)
++ SHMKit (commit 7a964057e218d1582a3c91e268755cdd9538bfcb - based 0.1.3)
 > Note: If these libraries cause duplicate symbols in your code - please notify us.
 
 Pod sub dependencies by Applicaster SDK:
-+ CocoaLumberjack/Swift
++ CocoaLumberjack/Swift = 2.4.0
 + FBSDKCoreKit = 4.11.0
 + FBSDKLoginKit = 4.11.0
 + FBSDKShareKit = 4.11.0
@@ -59,10 +68,18 @@ Pod sub dependencies by Applicaster SDK:
 + comScore-iOS-SDK = 3.1509.15
 + AFNetworking ~> 3.1.0
 + TTTAttributedLabel ~> 1.13.1
++ AppoxeeSDK (~> 4.0.13)
++ MPNotificationView 1.1.2
++ Formatter Kit ~> 1.8.0
++ FreeWheel ~> 5.18.2
++ ePlanning ~> 1.15
++ Akamai Analytics ~> 1.3
++ Flurry ~> 7.6.6
++ NKJWT ~> 0.1.0
 
 #### Other required configurations
 
-##### When compiling with iOS 9 BaseSDK:
+##### When compiling with iOS 10 BaseSDK:
 + Set `Enable Bitcode` to `No` (Selected Target-->Build Settings-->Build Options-->Enable Bitcode)
 + Add the following entry to your target's Info.plist to allow working with non HTTPS services:
 ```plist
