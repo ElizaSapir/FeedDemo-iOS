@@ -11,7 +11,7 @@ pre_install do |installer|
 end
 
 target 'FeedDemo-Swift' do
-    pod 'APFeed', '~> 3.5.12'
+    pod 'APFeed', '~> 3.5.13'
     pod 'ZappAnalyticsPlugins/GoogleAnalytics','~> 0.4.5'
     pod 'ZappAnalyticsPlugins','~> 0.4.5'
 end
