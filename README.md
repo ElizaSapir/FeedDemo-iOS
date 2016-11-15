@@ -19,7 +19,7 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
     ```
-    pod 'APFeed', '~> 3.5.12'
+    pod 'APFeed', '~> 3.5.13'
     pod 'ZappAnalyticsPlugins/GoogleAnalytics','~> 0.4.5'
     pod 'ZappAnalyticsPlugins','~> 0.4.5'
     ```
