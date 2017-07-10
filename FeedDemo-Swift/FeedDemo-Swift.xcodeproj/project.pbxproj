@@ -196,6 +196,7 @@
 					1D3525251C7356A8004DB5B5 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = WZZ4E5L8EL;
+						LastSwiftMigration = 0830;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -621,12 +622,13 @@
 					"\"${PODS_ROOT}/Headers/Public/comScore-iOS-SDK\"",
 				);
 				INFOPLIST_FILE = "FeedDemo-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applicaster.applicaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeedDemo-Swift/Classes/FeedDemo-Swift-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -649,11 +651,12 @@
 					"\"${PODS_ROOT}/Headers/Public/comScore-iOS-SDK\"",
 				);
 				INFOPLIST_FILE = "FeedDemo-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.applicaster.applicaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FeedDemo-Swift/Classes/FeedDemo-Swift-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

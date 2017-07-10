@@ -15,8 +15,8 @@ class APFeedDemoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(APFeedDemoTableViewController.timelineStatusChanged(_:)), name: kTimeFeedTimeLineStatusChanged, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(APFeedDemoTableViewController.episodeStatusChanged(_:)), name: kFeedEpisodeStatusChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(APFeedDemoTableViewController.timelineStatusChanged(_:)), name: NSNotification.Name(rawValue: kTimeFeedTimeLineStatusChanged), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(APFeedDemoTableViewController.episodeStatusChanged(_:)), name: NSNotification.Name(rawValue: kFeedEpisodeStatusChanged), object: nil)
         
         updateTimelines()
     }
@@ -28,23 +28,23 @@ class APFeedDemoTableViewController: UITableViewController {
 
     // MARK: - Private methods
     
-    dynamic private func timelineStatusChanged(notification: NSNotification) {
+    dynamic fileprivate func timelineStatusChanged(_ notification: Notification) {
         updateTimelines()
     }
     
-    dynamic private func episodeStatusChanged(notification: NSNotification) {
+    dynamic fileprivate func episodeStatusChanged(_ notification: Notification) {
         updateTimelines()
     }
     
     
-    private func updateTimelines() {
-        self.timelinesArray = APTimelinesManager.sharedManager().liveFeedTimelines()
+    fileprivate func updateTimelines() {
+        self.timelinesArray = APTimelinesManager.shared().liveFeedTimelines() as! NSArray
         self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.timelinesArray != nil) {
             return self.timelinesArray.count
         }
@@ -53,15 +53,15 @@ class APFeedDemoTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("timelineCellIdentifier", forIndexPath: indexPath) 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "timelineCellIdentifier", for: indexPath) 
 
-        let timeline: APFeedTimeline = self.timelinesArray.objectAtIndex(indexPath.row) as! APFeedTimeline
+        let timeline: APFeedTimeline = self.timelinesArray.object(at: indexPath.row) as! APFeedTimeline
         if (timeline.isLive) {
             cell.textLabel?.text = timeline.name
             cell.detailTextLabel?.text = "Not Available"
-            APTimelinesManager.sharedManager().episodesForTimelineID(timeline.timelineID, completion: { (episodes) -> Void in
-                let episodesArr: NSArray! = episodes as NSArray
+            APTimelinesManager.shared().episodes(forTimelineID: timeline.timelineID, completion: { (episodes) -> Void in
+                let episodesArr: NSArray! = episodes as! NSArray
                 for episode in episodesArr {
                     let feedEpisode: APFeedEpisode = episode as! APFeedEpisode
                     if timeline.name == cell.textLabel?.text {
@@ -75,11 +75,11 @@ class APFeedDemoTableViewController: UITableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Set the APFeedTimeline object
-        let timeline: APFeedTimeline = self.timelinesArray.objectAtIndex(indexPath.row) as! APFeedTimeline
+        let timeline: APFeedTimeline = self.timelinesArray.object(at: indexPath.row) as! APFeedTimeline
         // Present the selected Feed
-        APTimelinesManager.sharedManager().presentFeedWithTimelineID(timeline.timelineID, completionHandler: { (success) -> Void in
+        APTimelinesManager.shared().presentFeed(withTimelineID: timeline.timelineID, completionHandler: { (success) -> Void in
             if (!success) {
                 let alertView: UIAlertView = UIAlertView(title: "Missing Live Episode", message: "Could not open the feed because no live Episode set at the moment.", delegate: nil, cancelButtonTitle: "Close")
                 alertView.show()

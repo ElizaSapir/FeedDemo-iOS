@@ -63,10 +63,14 @@ static NSString *kAppSecretKey = @"c02165c93cc72695ac757e957e";
     // If the launch URL handling is being delayed, return YES.
     if (!self.appLaunchURL) {
         // The return can be used to check if Applicaster handled the URL scheme and add additional implementation
-        return [[APApplicasterController sharedInstance] application:application
-                                                             openURL:url
-                                                   sourceApplication:sourceApplication
-                                                          annotation:annotation];
+        NSMutableDictionary *launchOptionsDictionary = [NSMutableDictionary new];
+        [launchOptionsDictionary setObject:sourceApplication forKey:UIApplicationOpenURLOptionsSourceApplicationKey];
+        
+        if (annotation) {
+            [launchOptionsDictionary setObject:annotation forKey:UIApplicationOpenURLOptionsAnnotationKey];
+        }
+        
+        return [[APApplicasterController sharedInstance] application:application openURL:url options:launchOptionsDictionary];
     } else {
         // Or other URL scheme implementation
         return YES;
@@ -77,10 +81,11 @@ static NSString *kAppSecretKey = @"c02165c93cc72695ac757e957e";
 
 - (void)applicaster:(APApplicasterController *)applicaster loadedWithAccountID:(NSString *)accountID {
     if (self.appLaunchURL) {
+        NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:self.sourceApplication
+                                                                  forKey:UIApplicationOpenURLOptionsSourceApplicationKey];
         [[APApplicasterController sharedInstance] application:[UIApplication sharedApplication]
                                                       openURL:self.appLaunchURL
-                                            sourceApplication:self.sourceApplication
-                                                   annotation:nil];
+                                                      options:launchOptions];
         self.appLaunchURL = nil;
     } else if (self.remoteLaunchInfo != nil) {
         [applicaster.notificationManager appDidReceiveRemoteNotification:self.remoteLaunchInfo

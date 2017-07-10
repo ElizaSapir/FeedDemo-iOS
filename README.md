@@ -6,8 +6,8 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
 + [Objective-C Project](https://github.com/applicaster/FeedDemo-iOS/tree/master/FeedDemo-ObjectiveC)
 
 ### Requirements
-+ Xcode 8
-+ Deployment target 8.0 or above (valid architectures - armv7, arm64)
++ Xcode 8.3.3
++ Deployment target 9.0 or above (valid architectures - armv7, arm64)
 + [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
 
 ### Setup
@@ -19,9 +19,10 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
     `source 'git@github.com:applicaster/CocoaPods-Private.git'`
 4. Add Applicaster Feed to your Podfile:
     ```
-    pod 'APFeed', '~> 3.5.13'
-    pod 'ZappAnalyticsPlugins/GoogleAnalytics','~> 0.4.5'
-    pod 'ZappAnalyticsPlugins','~> 0.4.5'
+    pod 'APFeed', '~> 3.6.0'
+    pod 'ZappAnalyticsPlugins/GoogleAnalytics','~> 1.7.0'
+    pod 'ZappAnalyticsPlugins/Flurry','~> 1.7.0'
+    pod 'ZappAnalyticsPlugins','~> 1.7.0'
     ```
 5. Add the following pre-install script to your Podfile (CocoaPods transitive dependencies workaround):
 
@@ -31,12 +32,12 @@ Demo projects can be found on [GitHub](https://github.com/applicaster/FeedDemo-i
         def installer.verify_no_static_framework_transitive_dependencies; end
     end
     ```
-6. Add the following post-install script to you Podfile (Setting swift version to 2.3):
+6. Add the following post-install script to you Podfile (Setting swift version to 3.0):
     ```
     post_install do |installer|
         installer.pods_project.targets.each do |target|
             target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '2.3'
+                config.build_settings['SWIFT_VERSION'] = '3.0'
             end
         end
     end
@@ -55,29 +56,32 @@ Libraries that are directly linked within the Applicaster SDK:
 > Note: If these libraries cause duplicate symbols in your code - please notify us.
 
 Pod sub dependencies by Applicaster SDK:
-+ CocoaLumberjack/Swift = 2.4.0
-+ FBSDKCoreKit = 4.11.0
-+ FBSDKLoginKit = 4.11.0
-+ FBSDKShareKit = 4.11.0
-+ GoogleAnalytics = 3.14.0
-+ Firebase/AdMob ~> 3.3.0
-+ Firebase/Core ~> 3.3.0
-+ HockeySDK ~> 3.8.5
-+ Flurry-iOS-SDK = 7.3.0
-+ Mixpanel ~> 2.9.0
-+ comScore-iOS-SDK = 3.1509.15
++ CocoaLumberjack/Swift = 3.0.0
++ FBSDKCoreKit = 4.18.0
++ FBSDKLoginKit = 4.18.0
++ FBSDKShareKit = 4.18.0
++ GoogleAnalytics = 3.17.0
++ Firebase/AdMob ~> 4.0.0
++ Firebase/Core ~> 4.0.0
++ HockeySDK ~> 4.1.3
++ Flurry-iOS-SDK = 7.6.6
 + AFNetworking ~> 3.1.0
-+ TTTAttributedLabel ~> 1.13.1
++ TTTAttributedLabel ~> 2.0.0
 + AppoxeeSDK (~> 4.0.13)
 + MPNotificationView 1.1.2
 + Formatter Kit ~> 1.8.0
 + FreeWheel ~> 5.18.2
-+ ePlanning ~> 1.15
 + Akamai Analytics ~> 1.3
-+ Flurry ~> 7.6.6
 + NKJWT ~> 0.1.0
 
 #### Other required configurations
+
+##### Firebase Screen reporting in Info PLIST:
++ Unless using Firebase screen reporting - please add the following to the info.plist:
+```plist
+    <key>FirebaseScreenReportingEnabled</key>
+    <false/>
+```
 
 ##### When compiling with iOS 10 BaseSDK:
 + Set `Enable Bitcode` to `No` (Selected Target-->Build Settings-->Build Options-->Enable Bitcode)
@@ -96,9 +100,9 @@ Pod sub dependencies by Applicaster SDK:
 <key>LSApplicationQueriesSchemes</key>
     <array>
     <string>fbapi</string>
-		<string>fb-messenger-api</string>
-		<string>fbauth2</string>
-		<string>fbshareextension</string>
+	<string>fb-messenger-api</string>
+	<string>fbauth2</string>
+	<string>fbshareextension</string>
     <string>whatsapp</string>
     <string>applicaster</string>
   </array>
@@ -159,7 +163,14 @@ Add bridging `<#Target-Name>-Bridging-Header.h` if it dosen't exist in your proj
     // If the launch URL handling is being delayed, return YES.
     if (self.appLaunchURL == nil) {
         // The return can be used to check if Applicaster handled the URL scheme and add additional implementation
-        return [[APApplicasterController sharedInstance] application:application openURL:url sourceApplication:self.sourceApplication annotation:annotation];
+        NSMutableDictionary *launchOptionsDictionary = [NSMutableDictionary new];
+        [launchOptionsDictionary setObject:sourceApplication forKey:UIApplicationOpenURLOptionsSourceApplicationKey];
+        
+        if (annotation) {
+            [launchOptionsDictionary setObject:annotation forKey:UIApplicationOpenURLOptionsAnnotationKey];
+        }
+        
+        return [[APApplicasterController sharedInstance] application:application openURL:url options:launchOptionsDictionary];
     }
     else {
         // Or other URL scheme implementation
@@ -191,7 +202,11 @@ In case deep linking is used inside the app - you can use the previous function.
 ```objective-c
  - (void)applicaster:(APApplicasterController *)applicaster loadedWithAccountID:(NSString *)accountID {
 	if (self.appLaunchURL) {
-    	[[APApplicasterController sharedInstance] application:[UIApplication sharedApplication] openURL:self.appLaunchURL sourceApplication:self.sourceApplication annotation:nil];
+    	NSDictionary *launchOptions = [NSDictionary dictionaryWithObject:self.sourceApplication
+                                                                  forKey:UIApplicationOpenURLOptionsSourceApplicationKey];
+        [[APApplicasterController sharedInstance] application:[UIApplication sharedApplication]
+                                                      openURL:self.appLaunchURL
+                                                      options:launchOptions];
 		self.appLaunchURL = nil;
 	} else if (self.remoteLaunchInfo != nil) {
             [applicaster.notificationManager appDidReceiveRemoteNotification:self.remoteLaunchInfo launchedApplication:YES];
